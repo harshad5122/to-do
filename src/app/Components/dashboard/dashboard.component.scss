@@ -1,0 +1,13 @@
+.dropdown-toggle::after {
+    display: none;
+}
+
+.btn-link {
+    color: black;
+}
+
+.card-body {
+    height: 150px;
+    overflow-y: auto;
+    scrollbar: auto;
+}

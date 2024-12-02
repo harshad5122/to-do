@@ -1,0 +1,32 @@
+@if(isVisible){
+<div class="modal-overlay">
+    <div class="modal-content">
+        <h3>{{title}}</h3>
+        <hr>
+        @switch (type) {
+        @case ('forgotPassword') {
+        <form (ngSubmit)="onSubmitClick()">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">{{EMAIL_ADDRESS_LABEL}}</label>
+                <input type="email" name="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1"
+                placeholder="{{EMAIL_ADDRESS_PLACEHOLDER}}" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">{{EMAIL_ADDRESS_HELP_TEXT}}</div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" (click)="close()">{{CLOSE_BTN_LABEL}}</button>
+                <button class="btn btn-color" (click)="confirm()">{{SEND_BTN_LABEL}}</button>
+            </div>
+        </form>
+        }
+        @default {
+        <p>{{ content }}</p>
+        <hr>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" (click)="close()">{{CLOSE_BTN_LABEL}}</button>
+            <button class="btn btn-primary" (click)="confirm()">{{SEND_BTN_LABEL}}</button>
+        </div>
+        }
+        }
+    </div>
+</div>
+}
