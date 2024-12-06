@@ -29,7 +29,7 @@
 }
 
 .sidebar-header {
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar ul li {
@@ -56,6 +56,16 @@
 /* Navbar styling suggestions for app-nav-bar component */
 ::ng-deep app-nav-bar {
     background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: block;
+}
+
+.hover-effect {
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        background-color: var(--bs-card-cap-bg); // Light gray background on hover
+    }
 }
