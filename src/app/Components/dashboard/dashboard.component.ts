@@ -3,17 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModelComponent } from '../model/model.component';
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ModelComponent],
+  imports: [CommonModule, HttpClientModule, NavBarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
   cards: any[] = [];
   constructor(private todoService: TodoService) { }
+  filteredCards: any[] = [];
 
   ngOnInit(): void {
     this.fetchTodoList();
@@ -22,7 +24,8 @@ export class DashboardComponent implements OnInit {
   fetchTodoList(): void {
     this.todoService.getTodoList().subscribe((data) => {
       if (data?.todos?.length > 0) {
-        this.cards = data.todos;
+        this.cards = [...data.todos];
+        this.filteredCards = this.cards;
       }
     },
       (error) => {
@@ -43,5 +46,16 @@ export class DashboardComponent implements OnInit {
   onDeleteClick(card: any) {
     console.log('Delete action for card:', card);
     // this.openModal();
+  }
+
+
+  filterCards(searchTerm: string): void {
+    if (searchTerm && searchTerm.trim() !== '') {
+      searchTerm = searchTerm.toLowerCase();
+      this.filteredCards = this.cards.filter(card =>
+        card.todo.toLowerCase().includes(searchTerm.toLowerCase()));
+    } else {
+      this.filteredCards = this.cards;
+    }
   }
 }

@@ -13,7 +13,6 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getTodoList(): Observable<any> {
-    console.log('asdasdasdasda', this.apiUrl)
     return this.http.get<any>(this.apiUrl);
   }
 }
