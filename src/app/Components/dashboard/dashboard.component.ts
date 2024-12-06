@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { HttpClientModule } from '@angular/common/http';
 import { ModelComponent } from '../model/model.component';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NavBarComponent],
+  imports: [CommonModule, NavBarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-  cards: any[] = [];
-  constructor(private todoService: TodoService) { }
-  filteredCards: any[] = [];
+  private cards = signal<any[]>([]);
+  filteredCards = signal<any[]>([]);
 
+  constructor(private todoService: TodoService) { }
+  
   ngOnInit(): void {
     this.fetchTodoList();
   }
@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   fetchTodoList(): void {
     this.todoService.getTodoList().subscribe((data) => {
       if (data?.todos?.length > 0) {
-        this.cards = [...data.todos];
-        this.filteredCards = this.cards;
+        this.cards.set([...data.todos]);
+        this.filteredCards.set(this.cards());
       }
     },
       (error) => {
@@ -52,10 +52,10 @@ export class DashboardComponent implements OnInit {
   filterCards(searchTerm: string): void {
     if (searchTerm && searchTerm.trim() !== '') {
       searchTerm = searchTerm.toLowerCase();
-      this.filteredCards = this.cards.filter(card =>
-        card.todo.toLowerCase().includes(searchTerm.toLowerCase()));
+      this.filteredCards.set(this.cards().filter((card: any) =>
+        card.todo.toLowerCase().includes(searchTerm.toLowerCase())));
     } else {
-      this.filteredCards = this.cards;
+      this.filteredCards.set(this.cards());
     }
   }
 }

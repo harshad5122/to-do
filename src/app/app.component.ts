@@ -1,20 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
-import { SignInComponent } from "./Components/sign-in/sign-in.component";
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { ModelComponent } from "./Components/model/model.component";
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { TodoService } from './services/todo.service';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    SignInComponent,
-    RouterLink,
-    DashboardComponent,
-    ModelComponent,
     RouterModule,
     HttpClientModule
   ],

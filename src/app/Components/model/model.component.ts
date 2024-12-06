@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { messages } from '../../Constants/Messages';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-model',
@@ -10,7 +11,6 @@ import { messages } from '../../Constants/Messages';
   styleUrl: './model.component.scss'
 })
 export class ModelComponent {
-  @Input() isVisible: boolean = false;
   @Input() title: string = 'Modal Title';
   @Input() content: string = 'Modal Content';
   @Input() firstBtnName: string = 'Confirm';
@@ -25,16 +25,23 @@ export class ModelComponent {
   readonly SEND_BTN_LABEL: string = messages.SEND_BTN_LABEL;
   readonly EMAIL_ADDRESS_PLACEHOLDER: string = messages.EMAIL_ADDRESS_PLACEHOLDER;
 
+  constructor(private dialogRef: MatDialogRef<ModelComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.title = data.title;
+    this.content = data.content;
+    this.type = data.type;
+  }
+
   close() {
-    this.closeModal.emit();
+    this.dialogRef.close();
   }
 
   confirm() {
-    this.confirmAction.emit();
+    this.dialogRef.close('confirm');
   }
 
   onSubmitClick() {
     console.log('onSubmitClick');
-    this.close();
+    this.dialogRef.close('confirm 1');
   }
 }

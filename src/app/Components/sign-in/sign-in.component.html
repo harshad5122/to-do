@@ -1,39 +1,47 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="row w-100">
-        <div class="col-md-6 mx-auto">
-            <div class="card shadow-lg">
-                <div class="card-body">
-                    <h2 class="text-center mb-4 text-primary">{{LOGIN_TITLE}}</h2>
-                    <form (ngSubmit)="onSubmitClick()">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">{{EMAIL_ADDRESS_LABEL}}</label>
-                            <input type="email" name="email" [(ngModel)]="email" class="form-control"
-                                id="exampleInputEmail1" placeholder="{{EMAIL_ADDRESS_PLACEHOLDER}}"
-                                aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">{{EMAIL_ADDRESS_HELP_TEXT}}</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" name="password" [(ngModel)]="password" class="form-control"
-                                id="exampleInputPassword1" placeholder="{{PASSWORD_PLACEHOLDER}}">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">{{REMEMBER_ME_LABEL}}</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">{{LOGIN_LABEL}}</button>
-                        <div class="mt-3 text-center">
-                            <a (click)="onForgotTextClick()" class="text-secondary small">{{FORGOT_PASSWORD_LABEL}}</a>
-                        </div>
-                    </form>
+<div class="background_image">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row w-100">
+            <div class="col-md-6 mx-auto">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4 text-primary">{{LOGIN_TITLE}}</h2>
+                        <form (ngSubmit)="onSubmitClick()">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">{{EMAIL_ADDRESS_LABEL}}</label>
+                                <input type="email" name="email" [(ngModel)]="email" class="form-control"
+                                    id="exampleInputEmail1" placeholder="{{EMAIL_ADDRESS_PLACEHOLDER}}"
+                                    aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">{{EMAIL_ADDRESS_HELP_TEXT}}</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" name="password" [(ngModel)]="password" class="form-control"
+                                    id="exampleInputPassword1" placeholder="{{PASSWORD_PLACEHOLDER}}">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">{{REMEMBER_ME_LABEL}}</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">{{LOGIN_LABEL}}</button>
+                            <div class="mt-3 text-center">
+                                <a (click)="onForgotTextClick()" class="text-secondary small">{{FORGOT_PASSWORD_LABEL}}</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<app-model [isVisible]="isModalVisible" [title]="LOGIN_SUCCESS_MODEL_TITLE" [content]="LOGIN_SUCCESS_MODEL_CONTENT"
+<!-- <app-model [isVisible]="isModalVisible" [title]="LOGIN_SUCCESS_MODEL_TITLE" [content]="LOGIN_SUCCESS_MODEL_CONTENT"
     (closeModal)="handleModalClose()" (confirmAction)="handleModalConfirm()">
-</app-model>
-<app-model [isVisible]="isForgotPasswordModalVisible" [title]="FORGOT_PASSWORD_MODEL_TITLE" type='forgotPassword'
+</app-model> -->
+<!-- <app-model [isVisible]="isForgotPasswordModalVisible" [title]="FORGOT_PASSWORD_MODEL_TITLE" type='forgotPassword'
     (closeModal)="handleModalClose()" (confirmAction)="handleModalConfirm()">
-</app-model>
+</app-model> -->
+
+<!-- <ng-template #forgotPasswordModal>
+    <app-model [isVisible]="isForgotPasswordModalVisible" [title]="FORGOT_PASSWORD_MODEL_TITLE" type='forgotPassword'
+        (closeModal)="handleModalClose()" (confirmAction)="handleModalConfirm()">
+    </app-model>
+</ng-template> -->
