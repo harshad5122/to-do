@@ -11,46 +11,9 @@
     overflow-y: auto;
 }
 
-.sidebar {
-    min-width: 250px;
-    height: 100vh;
-    background: #FF6767;
-    color: black;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    padding: 20px;
-    overflow-y: hidden;
-}
-
-.ms-sidebar {
-    width: calc(100% - 250px);
-}
-
-.sidebar-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sidebar ul li {
-    padding: 10px 0;
-}
-
-.sidebar ul li a {
-    color: black;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.sidebar ul li a:hover {
-    color: white;
-}
-
 .main-content {
     flex: 1;
-    background: #f8f9fa;
+    // background: #f8f9fa;
 }
 
 /* Navbar styling suggestions for app-nav-bar component */
@@ -68,4 +31,14 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         background-color: var(--bs-card-cap-bg); // Light gray background on hover
     }
+}
+
+.margin-top-custom {
+    margin-top: 60px !important;
+}
+
+.dasboard-profile-image {
+    width: 100px;
+    height: 100px;
+    margin-top: -90px;
 }

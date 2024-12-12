@@ -3,6 +3,7 @@ import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ModelComponent } from '../model/model.component';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,7 +16,7 @@ export class NavBarComponent {
   title: string = '';
   content: string = '';
   type: string = '';
-  constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any, private searchService: SearchService) {
     this.title = data.title;
     this.content = data.content;
     this.type = data.type;
@@ -26,9 +27,8 @@ export class NavBarComponent {
 
   onSearch(event: any) {
     // Emit the search term even if empty to allow showing all results
-    this.searchTerm = event.target.value;
-    console.log(this.searchTerm);
-    this.searchEvent.emit(this.searchTerm.toLowerCase().trim());
+    const searchTerm = event.target.value;
+    this.searchService.updateSearchTerm(searchTerm)
   }
 
   addTaskModel() {

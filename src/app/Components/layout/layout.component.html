@@ -1,2 +1,31 @@
 <app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>
+<div class="layout-container">
+    <!-- Sidebar/Navigation -->
+    <div class="sidebar">
+        <div class="profile-container margin-top-custom">
+            <div class="profile-info">
+                <h4 class="user-name">Sundar Gurung</h4>
+                <p class="user-email">sundargurung360&#64;gmail.com</p>
+            </div>
+        </div>
+        <div class="nav-section">
+            <ul class="list-unstyled">
+                <li>
+                    <a routerLink="/dashboard" routerLinkActive="active">
+                        <i class="bi bi-grid-fill"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/admin-dashboard" routerLinkActive="active">
+                        <i class="bi bi-exclamation-circle-fill"></i> Vital Task
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
